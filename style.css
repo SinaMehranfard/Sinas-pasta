@@ -1,193 +1,1014 @@
+
+/* =========================
+   SINA'S PASTA
+   Pasta in Motion
+   ========================= */
+
+:root {
+    --cream: #f7f0e5;
+    --red: #d73b27;
+    --wine: #58212c;
+    --green: #536b45;
+    --ink: #241e1a;
+    --muted: #71665c;
+    --line: rgba(36, 30, 26, 0.18);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 24px;
+}
+
 body {
-    font-family: Verdana;
-    background-color: #2f2424;
-    color: #0577b4;
-    text-align: center;   
+    position: relative;
+    min-width: 320px;
+    overflow-x: hidden;
+    background: var(--cream);
+    color: var(--ink);
+    font-family: "DM Sans", Arial, sans-serif;
+    line-height: 1.6;
 }
-h1 {
-    font-family: Georgia;
-    color: #f5c542;
-    font-size: 50px;
-    margin: 20px;
-}
-.tagline {
-    font-size: 30px;
-    font-family: "Times New Roman";
-    color: #bdc636;
-    letter-spacing: 2px;
-}
-.Welcome {
-    font-family: Georgia;
-    color: #f5c542;
-    font-size: 40px;
-}
-.Try {
-font-size: 25px;
-    font-family: "Times New Roman";
-    color: #109494;
-    letter-spacing: 2px;
-}
-.Why {
-    color:#f5c542;
-    font-size: 30px;
-}
-.Our {
-    color:#f5c542;
-    font-size: 30px;
-    transform: translateX(15px);
-}
-.Fresh {
-    color:#af9039;
-    font-size: 20px;
-}
-.fast {
-    color:#af9039;
-    font-size: 20px;
-}
-.Handmade {
-    color:#af9039;
-    font-size: 20px;
-}
-.Sina {
-    color:#d2c441;
-    font-size: 10px;
-}
-.Menu {
-    color:#78c72a;
-    font-size: 25px;
-    font-family: fantasy;
+
+a {
+    color: inherit;
     text-decoration: none;
-    background-color: #5d0b58;
-    padding: 10px;
-    display: inline-block;
-    border-radius: 50px;
-    transform: scale(1.05);
-    margin: 20px;
+    -webkit-tap-highlight-color: transparent;
 }
-.Menu:hover {
-    color: #f5c542;
-    background-color: antiquewhite;
-    
-    
+
+img {
+    display: block;
+    width: 100%;
+    object-fit: cover;
 }
-.feature-section {
+
+::selection {
+    background: var(--wine);
+    color: var(--cream);
+}
+
+/* Spaghetti that draws as you scroll.
+   Absolute positioning prevents it from creating blank space. */
+
+.spaghetti-road {
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+    pointer-events: none;
+    opacity: 0.42;
+}
+
+#pastaTrail {
+    filter: drop-shadow(0 3px 2px rgba(112, 44, 20, 0.13));
+}
+
+#pastaHighlight {
+    opacity: 0.72;
+}
+
+/* Navigation */
+
+.nav {
+    position: relative;
+    z-index: 5;
     display: flex;
-    gap: 60px;
-    justify-content: center;
-    margin-top: 30px;
-    
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    padding: 23px 6%;
+    border-bottom: 1px solid var(--line);
 }
-.feature-box {
-    width: 200px;
-    padding: 20px;
-    background-color: #320813;
-    border-radius: 50px;
-    box-shadow: 10px 10px 10px rgb(0, 0, 0);
-    transition: 0.5s;
-    border: 2px solid #f5c542;
+
+.logo {
+    flex-shrink: 0;
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: 25px;
+    font-weight: 700;
+    letter-spacing: -1px;
 }
-.feature-box:hover {
-   transform: scale(1.25)
+
+.logo span {
+    color: var(--red);
 }
-.pasta-img {
-    width: 600px;
-    height: 550px;
-    border-radius: 50px;
-    box-shadow: 10px 10px 10px rgb(0, 0, 0);
-    transition: 0.5s;
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
 }
-.pasta-img:hover {
-    transform: scale(1.05)
+
+.nav-links a {
+    transition: color 0.25s ease, transform 0.25s ease;
 }
-.sinas-pasta {
-    width: 700px;
-    height: 430px;
-    border-radius: 50px;
-    box-shadow: 10px 10px 10px rgb(0, 0, 0);
-    transition: 0.5s;
+
+.nav-links a:hover {
+    color: var(--red);
 }
-.sinas-pasta:hover {
-    transform: scale(1.05)
+
+.nav-links .nav-cta {
+    padding: 12px 19px;
+    color: white;
+    background: var(--red);
+    border-radius: 3px;
 }
-@media (max-width: 700px) {
-    .pasta-img {
-        width: 90%;
+
+.nav-links .nav-cta:hover {
+    color: white;
+    background: var(--wine);
+    transform: rotate(-2deg);
+}
+
+/* Hero section */
+
+.hero {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: center;
+    gap: 2%;
+    min-height: 680px;
+    padding: 55px 7% 75px;
+    overflow: hidden;
+}
+
+.hero-copy {
+    position: relative;
+    z-index: 3;
+}
+
+.eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.eyebrow::before {
+    content: "";
+    width: 27px;
+    height: 2px;
+    background: var(--red);
+}
+
+.hero h1 {
+    margin: 26px 0;
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: clamp(60px, 8vw, 112px);
+    line-height: 0.94;
+    letter-spacing: -5px;
+    font-weight: 500;
+}
+
+.hero h1 em {
+    color: var(--red);
+    font-weight: 500;
+}
+
+.hero-description {
+    max-width: 350px;
+    margin: 24px 0 28px;
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.9;
+}
+
+.hero-actions {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 22px;
+}
+
+.primary-btn {
+    position: relative;
+    z-index: 3;
+    display: inline-flex;
+    align-items: center;
+    gap: 20px;
+    padding: 16px 20px;
+    border: 1px solid var(--red);
+    color: white;
+    background: var(--red);
+    font-size: 12px;
+    font-weight: 800;
+    transition:
+        color 0.3s ease,
+        background 0.3s ease,
+        transform 0.3s ease;
+}
+
+.primary-btn:hover {
+    color: var(--red);
+    background: transparent;
+    transform: translateY(-4px);
+}
+
+.primary-btn span {
+    transition: transform 0.3s ease;
+}
+
+.primary-btn:hover span {
+    transform: translate(3px, -3px);
+}
+
+.text-link {
+    padding-bottom: 5px;
+    border-bottom: 1px solid var(--ink);
+    font-size: 12px;
+    font-weight: 800;
+}
+
+/* Animated pasta illustration */
+
+.hero-art {
+    position: relative;
+    z-index: 1;
+    min-width: 0;
+    height: 510px;
+    display: grid;
+    place-items: center;
+    perspective: 900px;
+}
+
+.art-orbit {
+    position: absolute;
+    width: min(39vw, 440px);
+    aspect-ratio: 1;
+    border: 1px solid rgba(215, 59, 39, 0.35);
+    border-radius: 50%;
+    animation: orbit 24s linear infinite;
+}
+
+.art-orbit::before,
+.art-orbit::after {
+    content: "";
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background: var(--red);
+    border-radius: 50%;
+}
+
+.art-orbit::before {
+    top: 14%;
+    left: 15%;
+}
+
+.art-orbit::after {
+    right: 5%;
+    bottom: 28%;
+    width: 7px;
+    height: 7px;
+    background: var(--green);
+}
+
+.plate {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    place-items: center;
+    width: min(32vw, 350px);
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background:
+        radial-gradient(
+            circle,
+            #fdf9f0 0 54%,
+            #e9decd 55% 58%,
+            #fffaf0 59% 65%,
+            #e5d6c0 66% 68%,
+            #fdf8ee 69%
+        );
+    box-shadow:
+        20px 35px 55px rgba(64, 38, 24, 0.18),
+        inset -8px -10px 20px rgba(75, 42, 22, 0.07);
+    transform-style: preserve-3d;
+    transition: transform 0.18s ease-out;
+}
+
+.pasta-art {
+    display: grid;
+    place-items: center;
+    width: 75%;
+    height: 75%;
+    border-radius: 50%;
+    background:
+        radial-gradient(ellipse, #a82d1d 0 8%, transparent 9%),
+        radial-gradient(ellipse, #e9a33c 0 40%, #e9a33c 41%, transparent 42%);
+    filter: drop-shadow(0 8px 5px rgba(84, 35, 14, 0.15));
+}
+
+.pasta-art svg {
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+    animation: pasta-breathe 5s ease-in-out infinite;
+}
+
+.spaghetti {
+    fill: none;
+    stroke-width: 7;
+    stroke-linecap: round;
+}
+
+.spaghetti-highlight {
+    fill: none;
+    stroke: #ffdb82;
+    stroke-width: 2;
+    stroke-linecap: round;
+    opacity: 0.9;
+}
+
+.fork {
+    position: absolute;
+    z-index: 4;
+    top: -8%;
+    right: 7%;
+    width: 95px;
+    height: 240px;
+    transform: rotate(26deg);
+    transform-origin: 50% 20%;
+    animation: fork-float 4s ease-in-out infinite;
+}
+
+.fork svg {
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+}
+
+.floating-stamp {
+    position: absolute;
+    z-index: 5;
+    top: 8%;
+    right: 1%;
+    display: grid;
+    place-items: center;
+    width: 95px;
+    height: 95px;
+    border-radius: 50%;
+    color: var(--cream);
+    background: var(--green);
+    font-size: 10px;
+    font-weight: 800;
+    line-height: 1.5;
+    text-align: center;
+    letter-spacing: 1px;
+    transform: rotate(12deg);
+    animation: stamp-wiggle 5s ease-in-out infinite;
+}
+
+.floating-note {
+    position: absolute;
+    z-index: 5;
+    bottom: 9%;
+    left: -2%;
+    padding: 13px 18px;
+    background: #f3c95c;
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: 17px;
+    font-style: italic;
+    transform: rotate(-8deg);
+    box-shadow: 5px 8px 0 rgba(36, 30, 26, 0.08);
+}
+
+.side-note {
+    position: absolute;
+    right: 0;
+    bottom: 20%;
+    writing-mode: vertical-rl;
+    color: #9b8c7b;
+    font-size: 10px;
+    letter-spacing: 3px;
+}
+
+/* Animations */
+
+@keyframes orbit {
+    to { transform: rotate(360deg); }
+}
+
+@keyframes pasta-breathe {
+    0%, 100% { transform: rotate(-4deg) scale(1); }
+    50% { transform: rotate(4deg) scale(1.035); }
+}
+
+@keyframes fork-float {
+    0%, 100% { transform: rotate(26deg) translateY(0); }
+    50% { transform: rotate(19deg) translateY(-12px); }
+}
+
+@keyframes stamp-wiggle {
+    0%, 100% { rotate: 12deg; }
+    50% { rotate: 5deg; }
+}
+
+@keyframes hero-enter {
+    from {
+        opacity: 0;
+        transform: translateY(30px) rotate(1deg);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) rotate(0);
     }
 }
-.Title {
-    padding: 20px;
-    background-color:#1d754c;
-    border-radius: 50px;
-    border: 5px solid #f5c542;
+
+.hero-copy .eyebrow { animation: hero-enter 0.7s 0.05s both; }
+.hero-copy h1 { animation: hero-enter 0.8s 0.15s both; }
+.hero-copy .hero-description { animation: hero-enter 0.8s 0.28s both; }
+.hero-copy .hero-actions { animation: hero-enter 0.8s 0.4s both; }
+
+/* Moving text strip */
+
+.marquee {
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    padding: 19px 0;
+    color: var(--cream);
+    background: var(--red);
+    transform: rotate(-1.5deg) scale(1.03);
+    border-top: 1px solid var(--red);
+    border-bottom: 1px solid var(--red);
 }
-main {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding-bottom: 50px;
-}
-nav {
+
+.marquee-track {
     display: flex;
-    justify-content: center;
-    gap: 70px;
-    margin: 20px;
-    position: fixed;
-    bottom: 0;
-    left: 0;
+    width: max-content;
+    animation: marquee 25s linear infinite;
+}
+
+.marquee:hover .marquee-track {
+    animation-play-state: paused;
+}
+
+.marquee-item {
+    flex-shrink: 0;
+    padding: 0 25px;
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: 25px;
+    font-style: italic;
+    white-space: nowrap;
+}
+
+.marquee-item span {
+    padding-left: 30px;
+    font-family: "DM Sans", sans-serif;
+    font-size: 17px;
+}
+
+@keyframes marquee {
+    to { transform: translateX(-50%); }
+}
+
+/* Menu section */
+
+.section {
+    position: relative;
+    z-index: 1;
+    padding: 110px 7%;
+}
+
+.section-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    gap: 30px;
+    margin-bottom: 50px;
+}
+
+.section-label {
+    color: var(--red);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.section-title {
+    margin-top: 13px;
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: clamp(42px, 6vw, 76px);
+    line-height: 1.05;
+    font-weight: 500;
+    letter-spacing: -2px;
+}
+
+.section-title em {
+    color: var(--red);
+    font-weight: 500;
+}
+
+.section-desc {
+    max-width: 260px;
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.8;
+    text-align: left;
+}
+
+.catalog {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 25px;
+    align-items: start;
+}
+
+.food-card {
+    position: relative;
+    z-index: 1;
+    min-width: 0;
+    padding: 12px;
+    background: #fffaf1;
+    border: 1px solid var(--line);
+    transition:
+        transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1),
+        box-shadow 0.4s ease;
+}
+
+.food-card:nth-child(2) {
+    margin-top: 65px;
+    transform: rotate(1.5deg);
+}
+
+.food-card:nth-child(3) {
+    margin-top: 25px;
+    transform: rotate(-1.5deg);
+}
+
+.food-card:hover {
+    z-index: 3;
+    transform: translateY(-12px) rotate(0) scale(1.015);
+    box-shadow: 12px 20px 35px rgba(45, 31, 22, 0.13);
+}
+
+.food-image {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 4 / 4.6;
+    background: #e7d8c5;
+}
+
+.food-image img {
     width: 100%;
+    height: 100%;
+    transition: transform 0.7s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
-.Home {
-    color: #ab965c;
-    text-decoration: none;
-    display: inline-block;
-    background-color: #074278;
-    padding: 5px;
-    border-radius: 30px;
-    box-shadow: 10px 10px 10px rgb(0, 0, 0);
+
+.food-card:hover .food-image img {
+    transform: scale(1.08) rotate(2deg);
 }
-.Menu-nav {
-    color: #ab965c;
-    text-decoration: none;
-    display: inline-block;
-background-color: #074278;
-    padding: 5px;
-    border-radius: 30px;
-    box-shadow: 10px 10px 10px rgb(0, 0, 0);
+
+.food-number {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    padding: 7px 10px;
+    background: var(--cream);
+    font-size: 10px;
+    font-weight: 800;
 }
-.Us {
-    color: #ab965c;
-    text-decoration: none;
-    display: inline-block;
-    background-color: #074278;
-    padding: 5px;
-    border-radius: 30px;
-    box-shadow: 10px 10px 10px rgb(0, 0, 0);
+
+.food-tag {
+    position: absolute;
+    right: 12px;
+    bottom: 12px;
+    padding: 7px 10px;
+    color: white;
+    background: var(--red);
+    font-size: 10px;
+    font-weight: 800;
+    text-transform: uppercase;
+    transform: rotate(-3deg);
 }
-.Contact {
-    color: #ab965c;
-    text-decoration: none;
-    display: inline-block;
-    background-color: #074278;
-    padding: 5px;
-    border-radius: 30px;
-    box-shadow: 10px 10px 10px rgb(0, 0, 0);
-}
-.contact-section {
-    margin: 40px;
+
+.food-details {
     display: flex;
-    gap: 50px;
-    justify-content: center;
+    align-items: start;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 20px 8px 14px;
+    text-align: left;
 }
-.contact-section h2 {
-    margin-top: 45px;
+
+.food-details h3 {
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: 23px;
+    font-weight: 500;
 }
-.contact-info {
+
+.food-details p {
+    margin-top: 5px;
+    color: #82766b;
+    font-size: 11px;
+}
+
+.food-price {
+    padding-top: 5px;
+    color: var(--red);
+    font-size: 14px;
+    font-weight: 800;
+    white-space: nowrap;
+}
+
+.catalog-footer {
     display: flex;
     justify-content: center;
-    gap: 50px;
+    margin-top: 55px;
 }
-.contact-box {
-    background-color: #320813;
-    border-radius: 50px;
-    padding: 20px;
-    border: 2px solid #f5c542;
+
+.outline-btn {
+    display: inline-block;
+    padding: 16px 25px;
+    border: 1px solid var(--ink);
+    background: transparent;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 800;
+    transition: color 0.3s ease, background 0.3s ease;
+}
+
+.outline-btn:hover {
+    color: var(--cream);
+    background: var(--ink);
+}
+
+/* Story section */
+
+.story {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 8%;
+    align-items: center;
+    padding: 100px 9%;
+    overflow: hidden;
+    color: var(--cream);
+    background: var(--wine);
+}
+
+.story-image-wrap {
+    position: relative;
+    padding: 0 15px 15px 0;
+}
+
+.story-image-wrap::after {
+    content: "";
+    position: absolute;
+    inset: 15px 0 0 15px;
+    border: 1px solid #e9bd7d;
+    pointer-events: none;
+}
+
+.story-image {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+}
+
+.story-copy {
+    position: relative;
+    z-index: 1;
+}
+
+.story .section-label {
+    color: #f3c95c;
+}
+
+.story .section-title {
+    margin-bottom: 25px;
+}
+
+.story .section-title em {
+    color: #f3c95c;
+}
+
+.story-text {
+    max-width: 430px;
+    color: #e2cbc4;
+    font-size: 14px;
+    line-height: 2;
+}
+
+.story-signature {
+    margin-top: 30px;
+    color: #f3c95c;
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: 25px;
+    font-style: italic;
+}
+
+.story-decoration {
+    position: absolute;
+    right: -50px;
+    bottom: -150px;
+    color: rgba(255, 255, 255, 0.035);
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: 330px;
+    font-style: italic;
+    pointer-events: none;
+}
+
+/* Final call to action */
+
+.final-cta {
+    position: relative;
+    z-index: 1;
+    margin: 90px 7%;
+    padding: 80px 25px;
+    text-align: center;
+    border: 1px solid var(--line);
+    overflow: hidden;
+}
+
+.final-cta::before,
+.final-cta::after {
+    content: "✳";
+    position: absolute;
+    color: var(--red);
+    font-size: 110px;
+    opacity: 0.12;
+    animation: orbit 25s linear infinite;
+}
+
+.final-cta::before {
+    top: -20px;
+    left: 2%;
+}
+
+.final-cta::after {
+    right: 2%;
+    bottom: -30px;
+}
+
+.final-cta h2 {
+    position: relative;
+    z-index: 1;
+    margin: 20px 0 30px;
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: clamp(40px, 6vw, 75px);
+    font-weight: 500;
+    line-height: 1.1;
+}
+
+.final-cta h2 em {
+    color: var(--red);
+}
+
+.final-cta .primary-btn {
+    position: relative;
+}
+
+.footer {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    padding: 25px 7%;
+    border-top: 1px solid var(--line);
+    color: #75685c;
+    font-size: 11px;
+}
+
+.footer strong {
+    color: var(--wine);
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: 17px;
+}
+
+/* Scroll reveal */
+
+.reveal {
+    opacity: 0;
+    transform: translateY(35px);
+    transition:
+        opacity 0.8s ease,
+        transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Keyboard accessibility */
+
+a:focus-visible {
+    outline: 3px solid var(--green);
+    outline-offset: 4px;
+}
+
+/* Tablet */
+
+@media (max-width: 850px) {
+    .hero {
+        min-height: auto;
+        grid-template-columns: 1fr;
+        padding-top: 70px;
+        gap: 15px;
+    }
+
+    .hero-copy {
+        text-align: center;
+    }
+
+    .hero .eyebrow,
+    .hero-actions {
+        justify-content: center;
+    }
+
+    .hero-description {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .hero-art {
+        height: 430px;
+    }
+
+    .plate {
+        width: min(65vw, 340px);
+    }
+
+    .art-orbit {
+        width: min(78vw, 420px);
+    }
+
+    .catalog {
+        gap: 15px;
+    }
+
+    .food-details {
+        flex-direction: column;
+    }
+
+    .story {
+        gap: 35px;
+        padding: 75px 7%;
+    }
+}
+
+/* Mobile */
+
+@media (max-width: 600px) {
+    .nav {
+        padding: 18px 5%;
+        gap: 12px;
+    }
+
+    .logo {
+        font-size: 20px;
+    }
+
+    .nav-links {
+        gap: 12px;
+        font-size: 10px;
+    }
+
+    .nav-links a:nth-child(2),
+    .nav-links a:nth-child(3) {
+        display: none;
+    }
+
+    .nav-links .nav-cta {
+        padding: 10px 12px;
+    }
+
+    .hero {
+        padding: 65px 6% 45px;
+    }
+
+    .hero h1 {
+        letter-spacing: -3px;
+        font-size: clamp(54px, 15vw, 78px);
+    }
+
+    .hero-art {
+        height: 340px;
+    }
+
+    .plate {
+        width: min(72vw, 290px);
+    }
+
+    .art-orbit {
+        width: min(85vw, 330px);
+    }
+
+    .fork {
+        width: 70px;
+        height: 175px;
+    }
+
+    .floating-stamp {
+        width: 75px;
+        height: 75px;
+        font-size: 8px;
+    }
+
+    .floating-note {
+        font-size: 14px;
+    }
+
+    .side-note {
+        font-size: 8px;
+    }
+
+    .section {
+        padding: 75px 6%;
+    }
+
+    .section-top {
+        align-items: start;
+        flex-direction: column;
+        margin-bottom: 30px;
+    }
+
+    .catalog {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .food-card:nth-child(2),
+    .food-card:nth-child(3) {
+        margin-top: 0;
+        transform: none;
+    }
+
+    .food-image {
+        aspect-ratio: 5 / 4;
+    }
+
+    .food-details {
+        flex-direction: row;
+    }
+
+    .story {
+        grid-template-columns: 1fr;
+        padding: 65px 7%;
+    }
+
+    .story-image-wrap {
+        max-width: 420px;
+    }
+
+    .final-cta {
+        margin: 60px 5%;
+        padding: 65px 15px;
+    }
+
+    .footer {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .spaghetti-road {
+        opacity: 0.25;
+    }
+}
+
+/* Respect visitors who prefer reduced motion */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+    }
+
+    .reveal {
+        opacity: 1;
+        transform: none;
+    }
+
+    .spaghetti-road {
+        display: none;
+    }
 }

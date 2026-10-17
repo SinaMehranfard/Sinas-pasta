@@ -1,84 +1,283 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sina's pasta</title>
+    <meta name="description" content="Fresh pasta, handmade goodness, and a little Italian magic.">
+    <title>Sina's Pasta — Pasta in Motion</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
 </head>
 <body>
-    <header class="Title">
-    <h1>Sina's pasta</h1>
-    <p class= "tagline"> The best pasta in town!</p>
-    
-    <nav>
-        <a href="Home" class="Home">Home</a>
-        <a href="menu.html" class="Menu-nav">Menu</a>
-        <a href="Us" class="Us">About Us</a>
-        <a href="Contact" class="Contact">Contact</a>
-    </nav>
+
+    <!-- Animated spaghetti line -->
+    <svg class="spaghetti-road" id="spaghettiRoad"
+         viewBox="0 0 1000 1000"
+         preserveAspectRatio="none"
+         aria-hidden="true">
+        <defs>
+            <linearGradient id="pastaGradient" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#f6c65b"/>
+                <stop offset="50%" stop-color="#d73b27"/>
+                <stop offset="100%" stop-color="#f6c65b"/>
+            </linearGradient>
+        </defs>
+
+        <path id="pastaTrail"
+              d="M 850 -20 C 980 80 940 180 760 230
+                 S 420 300 520 430
+                 S 900 550 740 700
+                 S 300 850 430 1010"
+              fill="none"
+              stroke="url(#pastaGradient)"
+              stroke-width="8"
+              stroke-linecap="round"
+              pathLength="1"
+              stroke-dasharray="1"
+              stroke-dashoffset="1"/>
+
+        <path id="pastaHighlight"
+              d="M 850 -20 C 980 80 940 180 760 230
+                 S 420 300 520 430
+                 S 900 550 740 700
+                 S 300 850 430 1010"
+              fill="none"
+              stroke="#fff0b9"
+              stroke-width="2"
+              stroke-linecap="round"
+              pathLength="1"
+              stroke-dasharray="1"
+              stroke-dashoffset="1"/>
+    </svg>
+
+    <!-- Navigation -->
+    <header class="nav">
+        <a href="#home" class="logo">SINA'S<span>.</span>PASTA</a>
+
+        <nav class="nav-links" aria-label="Main navigation">
+            <a href="#menu">The Menu</a>
+            <a href="#story">Our Story</a>
+            <a href="#contact">Contact</a>
+            <a href="#menu" class="nav-cta">LET'S TWIRL ↗</a>
+        </nav>
     </header>
-<main>
-    <section>
-    <h2 class="Welcome">Welcome to Sina's pasta.</h2>
-    <h3 class= "Try">Try the best pasta in your whole life!</h3>
-    <img class="pasta-img" src="pasta.jpg" alt="Delicious pasta" width="500">
-    <br>
-    <a href="menu.html"class="Menu">View Menu</a>
-    <br>
-    </section>
 
-    <section>
-    <h2 class="Why">Why Sina's pasta?</h2>
-    <p>At Sina's Pasta, we use fresh ingredients and handmade pasta to give you the best pasta experience.</p>
-    <img class="sinas-pasta" src="Sinas-pasta.jpg" alt="Sina's pasta" width="500">
-    <br>
-    </section>
+    <main>
+        <!-- Hero -->
+        <section class="hero" id="home">
+            <div class="hero-copy">
+                <div class="eyebrow">A little taste of Italy</div>
 
-    <section>
-    <h2 class="Our">Our Features</h2>
-    </section>
-    <section class="feature-section">
-    <div class="feature-box">
-    <h3 class="Fresh">Fresh Ingredients</h3>
-    <p>In Sina's pasta we use Fresh Ingredients to keep you healthy.</p>
-    <br>
-    </div>
+                <h1>PASTA,<br>BUT MAKE<br>IT <em>ART.</em></h1>
 
-    <div class="feature-box">
-    <h3 class="fast">Fast Service</h3>
-    <p>Your pasta will be ready in less than 20 minutes!</p>
-    <br>
-    </div>
+                <p class="hero-description">
+                    Life is too short for boring pasta.
+                    Fresh ingredients, handmade goodness,
+                    and a little bit of Italian magic.
+                </p>
 
-    <div class="feature-box">
-    <h3 class="Handmade">Handmade Pasta</h3>
-    <p>Our pasta is handmade and freshly prepared every day.</p>
-    </div>
-    </section>
-    <section class="contact-section">
-    <h2>Contact Us:</h2>
-<div class="contact-info">
-<div class="contact-box">
-            <h3>Phone</h3>
-            <p>+98 912 123 4567</p>
+                <div class="hero-actions">
+                    <a href="#menu" class="primary-btn">
+                        EXPLORE THE MENU <span>↗</span>
+                    </a>
+                    <a href="#story" class="text-link">Our little story</a>
+                </div>
+            </div>
+
+            <!-- Animated pasta illustration -->
+            <div class="hero-art" id="heroArt">
+                <div class="art-orbit"></div>
+
+                <div class="plate" id="plate">
+                    <div class="pasta-art">
+                        <svg viewBox="0 0 300 300"
+                             role="img"
+                             aria-label="Illustration of twisted spaghetti">
+                            <defs>
+                                <linearGradient id="noodle" x1="0" y1="0" x2="1" y2="1">
+                                    <stop offset="0%" stop-color="#ffdc83"/>
+                                    <stop offset="50%" stop-color="#e6a03a"/>
+                                    <stop offset="100%" stop-color="#bf6e25"/>
+                                </linearGradient>
+                            </defs>
+
+                            <g class="spaghetti" stroke="url(#noodle)">
+                                <path d="M48 140 C20 50 220 35 230 120 S60 240 85 120 S255 45 220 190 S35 230 65 95"/>
+                                <path d="M60 160 C100 30 260 100 190 180 S30 170 100 80 S245 120 170 220"/>
+                                <path d="M70 110 C170 30 270 170 140 200 S50 80 190 75 S240 240 80 185"/>
+                                <path d="M90 190 C20 100 150 40 220 100 S130 250 80 150 S190 40 230 170"/>
+                                <path d="M45 125 C120 230 260 80 150 60 S40 190 160 220 S260 120 180 100"/>
+                                <path d="M75 75 C230 45 235 235 100 205 S60 65 195 105 S170 220 90 170"/>
+                            </g>
+
+                            <g class="spaghetti-highlight">
+                                <path d="M48 140 C20 50 220 35 230 120 S60 240 85 120"/>
+                                <path d="M60 160 C100 30 260 100 190 180 S30 170 100 80"/>
+                                <path d="M70 110 C170 30 270 170 140 200 S50 80 190 75"/>
+                            </g>
+
+                            <g fill="#bd3325">
+                                <ellipse cx="105" cy="104" rx="17" ry="12" transform="rotate(25 105 104)"/>
+                                <ellipse cx="195" cy="156" rx="19" ry="13" transform="rotate(-30 195 156)"/>
+                                <ellipse cx="142" cy="212" rx="14" ry="10"/>
+                            </g>
+
+                            <g fill="#536b45">
+                                <ellipse cx="145" cy="92" rx="12" ry="5" transform="rotate(-40 145 92)"/>
+                                <ellipse cx="215" cy="112" rx="13" ry="5" transform="rotate(30 215 112)"/>
+                                <ellipse cx="93" cy="192" rx="13" ry="5" transform="rotate(-25 93 192)"/>
+                            </g>
+                        </svg>
+                    </div>
+                </div>
+
+                <div class="fork" aria-hidden="true">
+                    <svg viewBox="0 0 100 250">
+                        <defs>
+                            <linearGradient id="metal" x1="0" y1="0" x2="1" y2="0">
+                                <stop offset="0%" stop-color="#887d6e"/>
+                                <stop offset="45%" stop-color="#f7eee0"/>
+                                <stop offset="100%" stop-color="#988c7d"/>
+                            </linearGradient>
+                        </defs>
+                        <path d="M45 65 L45 235 Q50 250 55 235 L55 65" fill="url(#metal)"/>
+                        <path d="M24 8 L24 48 Q24 68 50 68 Q76 68 76 48 L76 8
+                                 M37 8 L37 45 M50 8 L50 44 M63 8 L63 45"
+                              fill="none" stroke="url(#metal)"
+                              stroke-width="5" stroke-linecap="round"/>
+                    </svg>
+                </div>
+
+                <div class="floating-stamp">MADE<br>WITH<br>♥<br>LOVE</div>
+                <div class="floating-note">Mamma mia!</div>
+                <div class="side-note">HANDMADE · FRESH · DELICIOUS</div>
+            </div>
+        </section>
+
+        <!-- Moving text -->
+        <div class="marquee">
+            <div class="marquee-track">
+                <div class="marquee-item">FRESH PASTA <span>✳</span></div>
+                <div class="marquee-item">MADE WITH LOVE <span>✳</span></div>
+                <div class="marquee-item">ITALIAN SOUL <span>✳</span></div>
+                <div class="marquee-item">GOOD FOOD ONLY <span>✳</span></div>
+                <div class="marquee-item">FRESH PASTA <span>✳</span></div>
+                <div class="marquee-item">MADE WITH LOVE <span>✳</span></div>
+                <div class="marquee-item">ITALIAN SOUL <span>✳</span></div>
+                <div class="marquee-item">GOOD FOOD ONLY <span>✳</span></div>
+            </div>
         </div>
 
-        <div class="contact-box">
-            <h3>Email</h3>
-            <p>info@sinapasta.com</p>
-        </div>
+        <!-- Menu -->
+        <section class="section" id="menu">
+            <div class="section-top reveal">
+                <div>
+                    <div class="section-label">THE GOOD STUFF / 001</div>
+                    <h2 class="section-title">Meet your<br><em>new obsession.</em></h2>
+                </div>
+                <p class="section-desc">
+                    Three little masterpieces. Big flavors,
+                    beautiful ingredients, and absolutely no boring bites.
+                </p>
+            </div>
 
-        <div class="contact-box">
-            <h3>Address</h3>
-            <p>Ahvaz, Iran</p>
-        </div>
-    </div>
-</section>
-</main>
-<footer>
-    <p class="Sina">© 2026 Sina's Pasta. All rights reserved.</p>
-</footer>
+            <div class="catalog">
+                <article class="food-card reveal">
+                    <div class="food-image">
+                        <img src="Images/Pomodoro.jpg"
+                             alt="Fresh pasta with tomatoes and herbs" loading="lazy">
+                        <span class="food-number">NO. 01</span>
+                        <span class="food-tag">The classic</span>
+                    </div>
+                    <div class="food-details">
+                        <div>
+                            <h3>Pomodoro</h3>
+                            <p>Tomato · Basil · Parmesan</p>
+                        </div>
+                        <span class="food-price">$12</span>
+                    </div>
+                </article>
+
+                <article class="food-card reveal">
+                    <div class="food-image">
+                        <img src="Images/Velvet-alfredo.jpg"
+                             alt="Creamy Italian pasta" loading="lazy">
+                        <span class="food-number">NO. 02</span>
+                        <span class="food-tag">Fan favorite</span>
+                    </div>
+                    <div class="food-details">
+                        <div>
+                            <h3>Velvet Alfredo</h3>
+                            <p>Cream · Parmesan · Pepper · Chicken</p>
+                        </div>
+                        <span class="food-price">$15</span>
+                    </div>
+                </article>
+
+                <article class="food-card reveal">
+                    <div class="food-image">
+                        <img src="Images/Pesto.jpg"
+                             alt="Italian spaghetti with sauce" loading="lazy">
+                        <span class="food-number">NO. 03</span>
+                        <span class="food-tag">A little wild</span>
+                    </div>
+                    <div class="food-details">
+                        <div>
+                            <h3>Pesto</h3>
+                            <p>Fresh basil · Olive oil · Parmesan</p>
+                        </div>
+                        <span class="food-price">$14</span>
+                    </div>
+                </article>
+            </div>
+
+            <div class="catalog-footer reveal">
+                <a href="#contact" class="outline-btn">MORE FLAVOR, PLEASE ↗</a>
+            </div>
+        </section>
+
+        <!-- Story -->
+        <section class="story" id="story">
+            <div class="story-image-wrap reveal">
+                <img class="story-image"
+                     src="images/Sinas-pasta.jpg"
+                     alt="A warm restaurant dining atmosphere" loading="lazy">
+            </div>
+
+            <div class="story-copy reveal">
+                <div class="section-label">NOT JUST ANOTHER PASTA PLACE</div>
+                <h2 class="section-title">A little<br>messy.<br><em>A lot of love.</em></h2>
+                <p class="story-text">
+                    We believe food should be an experience, not just another
+                    thing on your to-do list. Every twist of pasta, every splash
+                    of sauce, every little detail is made to turn an ordinary
+                    day into something special.
+                </p>
+                <div class="story-signature">Made for pasta people.</div>
+            </div>
+
+            <div class="story-decoration" aria-hidden="true">Pasta</div>
+        </section>
+
+        <!-- Final call to action -->
+        <section class="final-cta" id="contact">
+            <div class="section-label">YOUR TABLE IS WAITING</div>
+            <h2>Good days start<br>with <em>good pasta.</em></h2>
+            <a href="#menu" class="primary-btn">FIND YOUR FAVORITE <span>↗</span></a>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <strong>SINA'S PASTA.</strong>
+        <span>Made with love, served with a little drama.</span>
+        <span>© 2026 SINA'S PASTA</span>
+    </footer>
 
 </body>
 </html>
